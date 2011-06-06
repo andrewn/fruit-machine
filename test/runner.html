@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>QUnit Test Suite</title>
+	<link rel="stylesheet" 
+		  href="../vendor/qunit/qunit/qunit.css" 
+		  type="text/css" media="screen">
+	<script type="text/javascript" 
+			src="../vendor/qunit/qunit/qunit.js"></script>
+	<script type="text/javascript">
+		var require = {
+			/*
+	        deps: ["some/module1", "my/module2", "a.js", "b.js"],
+	        callback: function(module1, module2) {
+	        },
+	        ready: function() {
+	            //This function is called once the DOM is ready.
+	        }
+	        */
+	        urlArgs: "cachebuster=" +  (new Date()).getTime()
+	    };
+	(new Date()).getTime()
+	</script>
+	<script data-main="../script/" 
+			type="text/javascript" 
+			src="../vendor/requirejs/require.js"></script>
+
+	<script type="text/javascript" src="model/player.js"></script>
+</head>
+<body>
+	<h1 id="qunit-header">QUnit Test Suite</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup</div>
+</body>
+</html>
