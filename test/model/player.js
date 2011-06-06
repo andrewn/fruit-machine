@@ -24,5 +24,16 @@ require(['model/player'], function (Player){
         player.addCredits(1);
         equal(player.credits, 1);
     });
+
+    test("should use credits", function () {
+        player.addCredits(1);
+        player.useCredits(1);
+        equal(player.credits, 0);
+    });
+
+    test("should throw if attempts to go overdrawn", function () {
+        player.addCredits(1);
+        raises( function () { player.useCredits(2); } );
+    });
     
 });
