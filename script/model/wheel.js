@@ -6,5 +6,12 @@ define(function () {
         this.previous = this.list[(this.list.length + (this.index - 1) % this.list.length)];
         this.next     = this.list[(this.index + 1) % this.list.length];
     };
+    Wheel.prototype.spin = function () {
+        if (!this.generator) { return; }
+        this.index = this.generator();
+        this.current  = this.list[this.index];
+        this.previous = this.list[(this.list.length + (this.index - 1) % this.list.length)];
+        this.next     = this.list[(this.index + 1) % this.list.length];
+    };
     return Wheel;
 });

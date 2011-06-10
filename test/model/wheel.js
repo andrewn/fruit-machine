@@ -19,4 +19,9 @@ require(['model/wheel'], function (Wheel) {
     test('should show next symbol on wheel', function () {
         equal(wheel.next, 'B');
     })
+    test('spin should chose a new symbol', function () {
+        wheel.generator = function () { return 2; };
+        wheel.spin();
+        equal(wheel.current, 'C');
+    });
 });
