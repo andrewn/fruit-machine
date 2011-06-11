@@ -24,4 +24,11 @@ require(['model/wheel'], function (Wheel) {
         wheel.spin();
         equal(wheel.current, 'C');
     });
+    test('previous and next should be correct after spin', function () {
+        wheel.generator = function () { return 3; };
+        wheel.spin();
+        equal(wheel.previous, 'C');
+        equal(wheel.current, 'D');
+        equal(wheel.next, 'A');
+    });
 });
