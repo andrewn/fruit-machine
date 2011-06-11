@@ -21,7 +21,7 @@ define(function () {
     };
     Wheel.prototype.spin = function () {
         if (!this.generator) { return; }
-        this.index = this.generator();
+        this.index = this.generator(this.list.length);
         var positions = updateForPosition(this.index, this.list);
         this.current  = positions.current;
         this.previous = positions.previous;

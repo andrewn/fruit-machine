@@ -31,4 +31,11 @@ require(['model/wheel'], function (Wheel) {
         equal(wheel.current, 'D');
         equal(wheel.next, 'A');
     });
+    test('should pass generator number of reels', function () {
+        var called = false, args = 0;
+        wheel.generator = function (max) { if(max) { called = true; args = max; } };
+        wheel.spin();
+        ok(called);
+        equal(args, 4);
+    });
 });
