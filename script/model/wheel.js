@@ -1,4 +1,4 @@
-define(function () {
+define(["model/generator"], function (generator) {
 
     function updateForPosition(pos, wheels) {
         var current  = wheels[pos],
@@ -27,5 +27,6 @@ define(function () {
         this.previous = positions.previous;
         this.next     = positions.next;
     };
+    Wheel.prototype.generator = generator;
     return Wheel;
 });
