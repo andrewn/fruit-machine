@@ -1,6 +1,11 @@
-define(function () {
+define(["model/wheel"], function (Wheel) {
     var FruitMachine = function () {
         this.result = [];
+        this.wheels = [new Wheel(), new Wheel(), new Wheel()];
+    };
+
+    FruitMachine.prototype.spin = function () {
+        this.wheels.forEach( function (wheel) { wheel.spin(); } )
     };
 
     FruitMachine.prototype.isWinner = function () {
@@ -10,14 +15,9 @@ define(function () {
         if (this.result.length != 3) { return false; }
 
         this.result.forEach(function (item) {
-            if (item != first) { same = false; }
+            if (item.current != first.current) { same = false; }
         });
         return same; 
-    };
-
-    FruitMachine.prototype.spin = function () {
-        if (!this.generator) { throw Error("No generator found"); }
-        this.result = [this.generator(), this.generator(), this.generator()];
     };
     
     return FruitMachine;

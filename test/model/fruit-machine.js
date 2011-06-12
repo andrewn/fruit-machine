@@ -1,4 +1,4 @@
-require(['model/fruit-machine'], function (FruitMachine) {
+require(['model/fruit-machine', 'model/wheel'], function (FruitMachine, Wheel) {
     var fm;
     module("model/fruit-machine", {
         setup: function () {
@@ -8,21 +8,33 @@ require(['model/fruit-machine'], function (FruitMachine) {
     test("should instantiate", function () {
         ok(new FruitMachine())
     });
-    test("should correctly read winner", function () {
-        var result = ['A', 'A', 'A'];
+    test("should load wheels", function () {
+        ok(fm.wheels[0] instanceof Wheel);
+    });
+    test("spin should spin wheels", function () {
+        sinon.spy(fm.wheels[0], "spin");
+        sinon.spy(fm.wheels[1], "spin");
+        sinon.spy(fm.wheels[2], "spin");
+
+        fm.spin();
+
+        ok(fm.wheels[0].spin.calledOnce);
+        ok(fm.wheels[1].spin.calledOnce);
+        ok(fm.wheels[2].spin.calledOnce);
+    });
+    test("should correctly read winner from wheels", function () {
+        var result = [  new Wheel('A', 'B', 'C'), 
+                        new Wheel('A', 'B', 'C'), 
+                        new Wheel('A', 'B', 'C') ];
         fm.result = result;
         ok(fm.isWinner());
     });
     test("should correctly read loser", function () {
-        var result = ['A', 'B', 'A'];
+        var result = [  new Wheel('A', 'B', 'C'), 
+                        new Wheel('A', 'B', 'C'), 
+                        new Wheel('A', 'B', 'C') ];
+        result[1].update(2);
         fm.result = result;
         ok(!fm.isWinner());
-    });
-    test("spin should generate combination", function () {
-        fm.generator = function () { return 'A'; };
-        fm.spin();
-        equal(fm.result[0], "A");
-        equal(fm.result[1], "A");
-        equal(fm.result[2], "A");
     });
 });

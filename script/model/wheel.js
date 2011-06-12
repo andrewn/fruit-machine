@@ -13,19 +13,18 @@ define(["model/generator"], function (generator) {
 
     var Wheel = function () {
         this.list     = Array.prototype.concat.apply([], arguments);
-        this.index    = 0;
+        this.update(0);
+    };
+    Wheel.prototype.update = function (index) {
+        this.index    = index;
         var positions = updateForPosition(this.index, this.list);
         this.current  = positions.current;
         this.previous = positions.previous;
-        this.next     = positions.next;
+        this.next     = positions.next;        
     };
     Wheel.prototype.spin = function () {
         if (!this.generator) { return; }
-        this.index = this.generator(this.list.length);
-        var positions = updateForPosition(this.index, this.list);
-        this.current  = positions.current;
-        this.previous = positions.previous;
-        this.next     = positions.next;
+        this.update(this.generator(this.list.length));
     };
     Wheel.prototype.generator = generator;
     return Wheel;

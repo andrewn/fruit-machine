@@ -38,4 +38,8 @@ require(['model/wheel'], function (Wheel) {
         ok(called);
         equal(args, 4);
     });
+    test('should enable manual wheel setting for testing', function () {
+        wheel.update(2);
+        equal(wheel.current, 'C');
+    });
 });
