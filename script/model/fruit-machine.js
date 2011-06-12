@@ -7,7 +7,13 @@ define(["model/wheel"], function (Wheel) {
     };
 
     FruitMachine.prototype.spin = function () {
-        this.wheels.forEach( function (wheel) { wheel.spin(); } )
+        this.wheels.forEach( function (wheel) { wheel.spin(); } );
+        this.resultFromWheels();
+    };
+
+    FruitMachine.prototype.resultFromWheels = function () {
+        this.result = this.wheels.map( function (wheel) { return wheel.current; } );
+        return this.result;
     };
 
     FruitMachine.prototype.isWinner = function () {
@@ -17,7 +23,7 @@ define(["model/wheel"], function (Wheel) {
         if (this.result.length != 3) { return false; }
 
         this.result.forEach(function (item) {
-            if (item.current != first.current) { same = false; }
+            if (item != first) { same = false; }
         });
         return same; 
     };

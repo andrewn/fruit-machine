@@ -22,19 +22,28 @@ require(['model/fruit-machine', 'model/wheel'], function (FruitMachine, Wheel) {
         ok(fm.wheels[1].spin.calledOnce);
         ok(fm.wheels[2].spin.calledOnce);
     });
-    test("should correctly read winner from wheels", function () {
-        var result = [  new Wheel('A', 'B', 'C'), 
+    test("should correctly fetch result from wheels", function () {
+        var wheels = [  new Wheel('A', 'B', 'C'), 
                         new Wheel('A', 'B', 'C'), 
-                        new Wheel('A', 'B', 'C') ];
-        fm.result = result;
+                        new Wheel('A', 'B', 'C') ]
+        fm.wheels = wheels;
+        fm.resultFromWheels();
         ok(fm.isWinner());
+        equal(fm.result[0], 'A');
+        equal(fm.result[1], 'A');
+        equal(fm.result[2], 'A');
     });
     test("should correctly read loser", function () {
-        var result = [  new Wheel('A', 'B', 'C'), 
+        var wheels = [  new Wheel('A', 'B', 'C'), 
                         new Wheel('A', 'B', 'C'), 
                         new Wheel('A', 'B', 'C') ];
-        result[1].update(2);
-        fm.result = result;
+        wheels[1].update(2);
+        fm.wheels = wheels;
+        fm.resultFromWheels();
+
         ok(!fm.isWinner());
+        equal(fm.result[0], 'A');
+        equal(fm.result[1], 'C');
+        equal(fm.result[2], 'A');    
     });
 });
