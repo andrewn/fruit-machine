@@ -3,8 +3,8 @@ define(["model/fruit-machine", "model/player"], function (FruitMachine, Player) 
         this.fm     = new FruitMachine();
         this.player = new Player();
     };
-    Game.prototype.start = function () {
-        //this.player.addCredits(1);
+    Game.prototype.insertCredit = function () {
+        this.player.addCredits(1);
     };
     Game.prototype.score = function () {
         return {
@@ -16,7 +16,10 @@ define(["model/fruit-machine", "model/player"], function (FruitMachine, Player) 
     };
 
     Game.prototype.play  = function () {
-        this.fm.spin();
+        if (this.player.credits > 0) {
+            this.player.useCredits(1);
+            this.fm.spin();
+        }
     };
 
     return Game;

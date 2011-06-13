@@ -26,8 +26,13 @@
 	<script type="text/javascript">
 		require(["jquery", "controller/game"], function ($, GameController) {
 			var game = new GameController();
-			$("button").click(function () {
+			$("button.pay").click(function () {
+				game.insertCredit();
+				$("button.play").removeAttr('disabled');
+			});
+			$("button.play").click(function () {
 				game.play();
+				$("button.play").attr('disabled', 'disabled');
 				var score = game.score();
 
 				$("body").css("backgroundColor", score.isWinner ? "green" : "red");
@@ -79,7 +84,8 @@
 	</style>
 </head>
 <body>
-	<button>Play!</button>
+	<button class="pay">Pay 1 credit</button>
+	<button class="play" disabled>Play!</button>
 	<div class="slot" id="slot-0"><ul><li>0</li><li>0</li><li>0</li></ul></div>
 	<div class="slot" id="slot-1"><ul><li>0</li><li>0</li><li>0</li></ul></div>
 	<div class="slot" id="slot-2"><ul><li>0</li><li>0</li><li>0</li></ul></div>
