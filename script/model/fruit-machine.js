@@ -1,9 +1,9 @@
 define(["model/wheel"], function (Wheel) {
     var FruitMachine = function () {
         this.result = [];
-        this.wheels = [ new Wheel('A', 'B', 'C', 'D'), 
-                        new Wheel('A', 'B', 'C', 'D'), 
-                        new Wheel('A', 'B', 'C', 'D') ];
+        this.wheels = [ new Wheel('A', 'D', 'C', 'B'), 
+                        new Wheel('B', 'C', 'A', 'D'), 
+                        new Wheel('A', 'C', 'B', 'D') ];
     };
 
     FruitMachine.prototype.spin = function () {
