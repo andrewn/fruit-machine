@@ -9,7 +9,9 @@ define(["model/fruit-machine", "model/player"], function (FruitMachine, Player) 
     Game.prototype.score = function () {
         return {
             isWinner    : this.fm.isWinner(),
-            result      : this.fm.result
+            result      : this.fm.result,
+            previous    : this.fm.previous,
+            next        : this.fm.next
         };
     };
 

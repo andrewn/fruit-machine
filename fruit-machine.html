@@ -28,13 +28,48 @@
 			var game = new GameController();
 			$("button").click(function () {
 				game.play();
-				$("body").css("backgroundColor", game.score().isWinner ? "green" : "red");
-				console.log(game.score().isWinner, game.score().result);
+				var score = game.score();
+
+				$("body").css("backgroundColor", score.isWinner ? "green" : "red");
+				score.result.forEach(function (item, index) {
+					var sel = '#slot-'+index,
+						previous = score.previous[index],
+						current  = item,
+						next     = score.next[index],
+						slot     = $(sel);
+					slot.html(
+						'<ul>' + 
+							'<li>' + previous + '</li>' + 
+							'<li>' + current  + '</li>' + 
+							'<li>' + next     + '</li>' + 
+						'</ul>');
+				});
 			});
 		});
 	</script>
+	<style type="text/css">
+		.slot {
+			float: left;
+			width: 50px;
+			height: 100px;
+		}
+		.slot ul li {
+			height: 50px;
+			border: 1px solid #AAA;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.slot ul li:first-child,
+		.slot ul li:last-child {
+			height: 20px;
+		}
+	</style>
 </head>
 <body>
 	<button>Play!</button>
+	<div class="slot" id="slot-0"><ul><li>0</li><li>0</li><li>0</li></ul></div>
+	<div class="slot" id="slot-1"><ul><li>0</li><li>0</li><li>0</li></ul></div>
+	<div class="slot" id="slot-2"><ul><li>0</li><li>0</li><li>0</li></ul></div>
 </body>
 </html>

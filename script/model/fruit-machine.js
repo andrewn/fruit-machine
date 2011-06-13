@@ -12,7 +12,9 @@ define(["model/wheel"], function (Wheel) {
     };
 
     FruitMachine.prototype.resultFromWheels = function () {
-        this.result = this.wheels.map( function (wheel) { return wheel.current; } );
+        this.result     = this.wheels.map( function (wheel) { return wheel.current; } );
+        this.previous   = this.wheels.map( function (wheel) { return wheel.previous; } );
+        this.next       = this.wheels.map( function (wheel) { return wheel.next; } );
         return this.result;
     };
 
