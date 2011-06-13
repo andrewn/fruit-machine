@@ -39,9 +39,9 @@
 						slot     = $(sel);
 					slot.html(
 						'<ul>' + 
-							'<li>' + previous + '</li>' + 
-							'<li>' + current  + '</li>' + 
-							'<li>' + next     + '</li>' + 
+							'<li class="symbol-' + previous.toLowerCase() + '">' + previous + '</li>' + 
+							'<li class="symbol-' + current.toLowerCase() + '">' + current  + '</li>' + 
+							'<li class="symbol-' + next.toLowerCase() + '">' + next     + '</li>' + 
 						'</ul>');
 				});
 			});
