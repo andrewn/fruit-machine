@@ -30,41 +30,59 @@
 			i: 'speech', 	j: 'sun', 		k: 'twitter'
 		};
 
+		function updateResults(score) {
+			score.result.forEach(function (item, index) {
+				var sel = '#slot-'+index,
+					previous = score.previous[index],
+					current  = item,
+					next     = score.next[index],
+					slot     = $(sel);
+				console.log(previous, current, next);
+				slot.html(
+					'<ul>' + 
+						'<li class="symbol-' + previous.toLowerCase() + '">' + previous + '</li>' + 
+						'<li class="symbol-' + current.toLowerCase() + '">' + current  + '</li>' + 
+						'<li class="symbol-' + next.toLowerCase() + '">' + next     + '</li>' + 
+					'</ul>');
+			});
+			if ( score.isWinner ) {
+				$('.winner').addClass('show')
+			}
+		};
+
+		function updateCredits(game) {
+			$('.balance').text(game.credits());
+			if (game.credits() == 0) {
+				$("button.play").attr('disabled', 'disabled');
+			} else {
+				$("button.play").removeAttr('disabled');
+			}
+		};
+
 		require(["jquery", "controller/game"], function ($, GameController) {
 			var game = new GameController();
 			$("button.pay").click(function () {
 				game.insertCredit();
-				$("button.play").removeAttr('disabled');
+				updateCredits(game);
 			});
 			$("button.play").click(function () {
 				game.play();
-				$("button.play").attr('disabled', 'disabled');
 				var score = game.score();
-
-				$("body").css("backgroundColor", score.isWinner ? "green" : "red");
-				score.result.forEach(function (item, index) {
-					var sel = '#slot-'+index,
-						previous = score.previous[index],
-						current  = item,
-						next     = score.next[index],
-						slot     = $(sel);
-					console.log(previous, current, next);
-					slot.html(
-						'<ul>' + 
-							'<li class="symbol-' + previous.toLowerCase() + '">' + previous + '</li>' + 
-							'<li class="symbol-' + current.toLowerCase() + '">' + current  + '</li>' + 
-							'<li class="symbol-' + next.toLowerCase() + '">' + next     + '</li>' + 
-						'</ul>');
-				});
+				updateResults(score);
+				updateCredits(game);
 			});
 		});
 	</script>
 	<link href="css/screen.css" rel="stylesheet" media="all" />
 </head>
 <body>
-	<button class="pay">Pay 1 credit</button>
-	<button class="play" disabled>Play!</button>
+	<div class="credits">
+		<div class="balance">0</div>
+		<button class="pay">Pay 1 credit</button>
+		<button class="play" disabled>Play!</button>
+	</div>
 	<div class="slots">
+		<div class="winner">Winner!</div>
 		<div class="slot" id="slot-0">
 			<ul><li class="symbol-a">0</li><li class="symbol-b">0</li><li class="symbol-c">0</li></ul>
 		</div>
