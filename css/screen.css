@@ -45,3 +45,16 @@
     /* margin-top: 50px; */
     border-top: 1px solid #BBB;
 }
+
+.slot li { background-repeat: no-repeat; }
+.symbol-a { background: url('../icons/chrome.svg'); }
+.symbol-b { background: url('../icons/cloud_x.svg'); }
+.symbol-c { background: url('../icons/dollar.svg'); }
+.symbol-d { background: url('../icons/explorer.svg'); }
+.symbol-e { background: url('../icons/firefox.svg'); }
+.symbol-f { background: url('../icons/octocat.svg'); }
+.symbol-g { background: url('../icons/padlock.svg'); }
+.symbol-h { background: url('../icons/safari.svg'); }
+.symbol-i { background: url('../icons/speech.svg'); }
+.symbol-j { background: url('../icons/sun.svg'); }
+.symbol-k { background: url('../icons/twitter.svg'); }
