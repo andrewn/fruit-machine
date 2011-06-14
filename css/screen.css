@@ -46,15 +46,18 @@
     border-top: 1px solid #BBB;
 }
 
-.slot li { background-repeat: no-repeat; }
-.symbol-a { background: url('../icons/chrome.svg'); }
-.symbol-b { background: url('../icons/cloud_x.svg'); }
-.symbol-c { background: url('../icons/dollar.svg'); }
-.symbol-d { background: url('../icons/explorer.svg'); }
-.symbol-e { background: url('../icons/firefox.svg'); }
-.symbol-f { background: url('../icons/octocat.svg'); }
-.symbol-g { background: url('../icons/padlock.svg'); }
-.symbol-h { background: url('../icons/safari.svg'); }
-.symbol-i { background: url('../icons/speech.svg'); }
-.symbol-j { background: url('../icons/sun.svg'); }
-.symbol-k { background: url('../icons/twitter.svg'); }
+.slot li { 
+    background-repeat: no-repeat;
+    text-indent: -9999px
+}
+.symbol-a { background-image: url('../icons/chrome.svg'); }
+.symbol-b { background-image: url('../icons/cloud_x.svg'); }
+.symbol-c { background-image: url('../icons/dollar.svg'); }
+.symbol-d { background-image: url('../icons/explorer.svg'); }
+.symbol-e { background-image: url('../icons/firefox.svg'); }
+.symbol-f { background-image: url('../icons/octocat.svg'); }
+.symbol-g { background-image: url('../icons/padlock.svg'); }
+.symbol-h { background-image: url('../icons/safari.svg'); }
+.symbol-i { background-image: url('../icons/speech.svg'); }
+.symbol-j { background-image: url('../icons/sun.svg'); }
+.symbol-k { background-image: url('../icons/twitter.svg'); }

@@ -24,6 +24,12 @@
 			type="text/javascript" 
 			src="vendor/requirejs/require.js"></script>
 	<script type="text/javascript">
+		var SYMBOLS = {
+			a: 'chrome', 	b: 'cloud_x', 	c: 'dollar', 	d: 'explorer',
+			e: 'firefox', 	f: 'octocat', 	g: 'padlock', 	h: 'safari',
+			i: 'speech', 	j: 'sun', 		k: 'twitter'
+		};
+
 		require(["jquery", "controller/game"], function ($, GameController) {
 			var game = new GameController();
 			$("button.pay").click(function () {
@@ -42,6 +48,7 @@
 						current  = item,
 						next     = score.next[index],
 						slot     = $(sel);
+					console.log(previous, current, next);
 					slot.html(
 						'<ul>' + 
 							'<li class="symbol-' + previous.toLowerCase() + '">' + previous + '</li>' + 
@@ -58,9 +65,15 @@
 	<button class="pay">Pay 1 credit</button>
 	<button class="play" disabled>Play!</button>
 	<div class="slots">
-		<div class="slot" id="slot-0"><ul><li>0</li><li>0</li><li>0</li></ul></div>
-		<div class="slot" id="slot-1"><ul><li>0</li><li>0</li><li>0</li></ul></div>
-		<div class="slot" id="slot-2"><ul><li>0</li><li>0</li><li>0</li></ul></div>
+		<div class="slot" id="slot-0">
+			<ul><li class="symbol-a">0</li><li class="symbol-b">0</li><li class="symbol-c">0</li></ul>
+		</div>
+		<div class="slot" id="slot-1">
+			<ul><li class="symbol-a">0</li><li class="symbol-b">0</li><li class="symbol-c">0</li></ul>
+		</div>
+		<div class="slot" id="slot-2">
+			<ul><li class="symbol-a">0</li><li class="symbol-b">0</li><li class="symbol-c">0</li></ul>
+		</div>
 	</div>
 </body>
 </html>
