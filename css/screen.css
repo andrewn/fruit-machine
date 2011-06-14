@@ -1,11 +1,13 @@
 body {
     text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
 }
 
 .winner {
-    font-weight: bold;
     font-size: 50px;
-    font-family: sans-serif;
 
     position: absolute;
     width: 573px;
@@ -25,9 +27,24 @@ body {
     opacity: 1;
 }
 
+.credits {
+    width: 150px;
+    position: relative;
+}
+
 .credits .balance {
     width: 50px;
     height: 50px;
+}
+
+.credits button {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.credits button + button {
+    top: 50%;
 }
 
 .slots {

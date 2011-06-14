@@ -17,12 +17,17 @@ define(["model/fruit-machine", "model/player"], function (FruitMachine, Player) 
             next        : this.fm.next
         };
     };
-
     Game.prototype.play  = function () {
         if (this.player.credits > 0) {
             this.player.useCredits(1);
             this.fm.spin();
         }
+    };
+    Game.prototype.init  = function () {
+        this.fm.spin();
+        var initialResult = this.score();
+        initialResult.isWinner = false;
+        return initialResult;
     };
 
     return Game;
