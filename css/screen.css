@@ -6,7 +6,7 @@ body {
     width: 573px;
     background-color: #333;
     border: 10px solid #333;
-    border-radius: 10px;
+    border-radius: 30px;
 
     margin: 0 auto;
 }
@@ -22,7 +22,7 @@ body {
 
     background-color: #EEE;
     border: 10px solid #AAA;
-    border-radius: 10px;
+    border-radius: 25px;
 
     overflow: hidden;
 }
@@ -40,6 +40,10 @@ body {
     margin: 0;
     line-height: 100px;
 
+    background-position: -5px -5px;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    
     font-weight: bold;
 }
 .slot ul li:first-child {
@@ -49,11 +53,6 @@ body {
 .slot ul li + li:last-child {
     /* margin-top: 50px; */
     border-top: 1px solid #BBB;
-}
-
-.slot li { 
-    background-repeat: no-repeat;
-    text-indent: -9999px
 }
 .symbol-a { background-image: url('../icons/chrome.svg'); }
 .symbol-b { background-image: url('../icons/cloud_x.svg'); }
