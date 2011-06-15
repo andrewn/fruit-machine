@@ -6,6 +6,10 @@ define(["model/wheel"], function (Wheel) {
                         new Wheel('E', 'F', 'A', 'I', 'J', 'C', 'G', 'B', 'H', 'D') ];
     };
 
+//    FruitMachine.prototype.winningLines = {
+//        'ABC' 
+//    };
+
     FruitMachine.prototype.spin = function () {
         this.wheels.forEach( function (wheel) { wheel.spin(); } );
         this.resultFromWheels();
