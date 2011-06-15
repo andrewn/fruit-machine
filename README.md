@@ -10,6 +10,8 @@ Run tests by opening [test/runner.html] in your browser.
 
 ## TODO
 
+- Pay out when matches winning lines
 - Put on demo page
-- Pay out when match
+- Shake to play
+- Format on small screen
 - Vary payout so that machine never pays out too much

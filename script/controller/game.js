@@ -4,7 +4,7 @@ define(["model/fruit-machine", "model/player"], function (FruitMachine, Player) 
         this.player = new Player();
     };
     Game.prototype.insertCredit = function () {
-        this.player.addCredits(1);
+        this.player.addCredits(5);
     };
     Game.prototype.credits = function () {
         return this.player.credits;
