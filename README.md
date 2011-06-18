@@ -11,7 +11,9 @@ Run tests by opening [test/runner.html] in your browser.
 ## TODO
 
 - Put on demo page
+- animate wheels spinning
+- Change winning text to indicate jackpot
+- Format for small screen 
 - Shake to play
-- Format on small screen
-- Vary payout so that machine never pays out too much
 - docco
+- Vary payout so that machine never pays out too much
