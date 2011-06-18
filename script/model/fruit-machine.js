@@ -1,4 +1,4 @@
-define(["model/wheel", "underscore"], function (Wheel, _) {
+define(["model/wheel", "model/payline", "underscore"], function (Wheel, Payline, _) {
     var FruitMachine = function () {
         this.result = [];
         this.wheels = [ new Wheel('A', 'D', 'C', 'B', 'E', 'F', 'G', 'H', 'I', 'J'), 
@@ -6,9 +6,16 @@ define(["model/wheel", "underscore"], function (Wheel, _) {
                         new Wheel('E', 'F', 'A', 'I', 'J', 'C', 'G', 'B', 'H', 'D') ];
     };
 
-//    FruitMachine.prototype.winningLines = {
-//        'ABC' 
-//    };
+    FruitMachine.prototype.paylines = _.flatten([
+        // full matches
+        _.map(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'], function(symbol) {
+            return new Payline([symbol, symbol, symbol].join(''), 30)
+        }),
+        // partial matches
+        _.map(['A', 'B', 'C', 'E', 'F', 'G', 'H', 'I', 'J'], function(symbol) {
+            return new Payline([symbol, symbol].join(''), 5)
+        }),
+    ]);
 
     FruitMachine.prototype.spin = function () {
         this.wheels.forEach( function (wheel) { wheel.spin(); } );

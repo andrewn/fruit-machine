@@ -19,5 +19,8 @@ define(['underscore'], function (_) {
 
         return (match) ? this.credits : null;
     };
+    Payline.prototype.toString = function () {
+        return this.symbols.join('');
+    }
     return Payline;
 });
