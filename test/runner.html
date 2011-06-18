@@ -14,15 +14,12 @@
 
 	<script type="text/javascript">
 		var require = {
-			/*
-	        deps: ["some/module1", "my/module2", "a.js", "b.js"],
-	        callback: function(module1, module2) {
+	        urlArgs: "cachebuster=" +  (new Date()).getTime(),
+		    paths: {
+	            jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min',
+		    	underscore: '../vendor/underscore/underscore'
 	        },
-	        ready: function() {
-	            //This function is called once the DOM is ready.
-	        }
-	        */
-	        urlArgs: "cachebuster=" +  (new Date()).getTime()
+	        priority: ['jquery', 'underscore']
 	    };
 	</script>
 	<script data-main="../script/" 
@@ -32,6 +29,7 @@
 	<script type="text/javascript" src="model/player.js"></script>
 	<script type="text/javascript" src="model/fruit-machine.js"></script>
 	<script type="text/javascript" src="model/wheel.js"></script>
+	<script type="text/javascript" src="model/payline.js"></script>
 
 	<script type="text/javascript" src="controller/game.js"></script>
 </head>

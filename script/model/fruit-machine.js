@@ -1,4 +1,4 @@
-define(["model/wheel"], function (Wheel) {
+define(["model/wheel", "underscore"], function (Wheel, _) {
     var FruitMachine = function () {
         this.result = [];
         this.wheels = [ new Wheel('A', 'D', 'C', 'B', 'E', 'F', 'G', 'H', 'I', 'J'), 
@@ -23,15 +23,11 @@ define(["model/wheel"], function (Wheel) {
     };
 
     FruitMachine.prototype.isWinner = function () {
-        var same = true,
-            first = this.result[0];
-
-        if (this.result.length != 3) { return false; }
-
-        this.result.forEach(function (item) {
-            if (item != first) { same = false; }
+        var result = this.result;
+        var matchingPayline = _.detect(this.paylines, function (payline) {
+            return payline.check(result) != null;
         });
-        return same; 
+        return matchingPayline ? matchingPayline.check(result) : null;
     };
     
     return FruitMachine;

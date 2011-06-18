@@ -1,4 +1,4 @@
-require(['model/fruit-machine', 'model/wheel'], function (FruitMachine, Wheel) {
+require(['model/fruit-machine', 'model/wheel', 'model/payline'], function (FruitMachine, Wheel, Payline) {
     var fm;
     module("model/fruit-machine", {
         setup: function () {
@@ -25,20 +25,45 @@ require(['model/fruit-machine', 'model/wheel'], function (FruitMachine, Wheel) {
     test("should correctly fetch result from wheels", function () {
         var wheels = [  new Wheel('A', 'B', 'C'), 
                         new Wheel('A', 'B', 'C'), 
-                        new Wheel('A', 'B', 'C') ]
+                        new Wheel('A', 'B', 'C') ];
+        var paylines = [ new Payline('AAA', 10),
+                         new Payline('BBB', 10),
+                         new Payline('CCC', 10) ];
         fm.wheels = wheels;
+        fm.paylines = paylines;
+
         fm.resultFromWheels();
+        
         ok(fm.isWinner());
         equal(fm.result[0], 'A');
         equal(fm.result[1], 'A');
         equal(fm.result[2], 'A');
     });
+    test("should payout on payline", function () {
+        var wheels = [  new Wheel('A', 'B', 'C'), 
+                        new Wheel('A', 'B', 'C'), 
+                        new Wheel('A', 'B', 'C') ];
+        var paylines = [ new Payline('AA', 10) ];
+
+        fm.wheels   = wheels;
+        fm.paylines = paylines;
+
+        fm.resultFromWheels();
+
+        equal(fm.isWinner(), 10);
+    });
     test("should correctly read loser", function () {
         var wheels = [  new Wheel('A', 'B', 'C'), 
                         new Wheel('A', 'B', 'C'), 
                         new Wheel('A', 'B', 'C') ];
+        var paylines = [ new Payline('AAA', 10),
+                         new Payline('BBB', 10),
+                         new Payline('CCC', 10) ];
+
         wheels[1].update(2);
-        fm.wheels = wheels;
+        fm.wheels   = wheels;
+        fm.paylines = paylines;
+
         fm.resultFromWheels();
 
         ok(!fm.isWinner());

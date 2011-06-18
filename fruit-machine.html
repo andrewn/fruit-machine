@@ -5,19 +5,12 @@
 	<title>Fruit Machine</title>
 	<script type="text/javascript">
 		var require = {
-			/*
-	        deps: ["some/module1", "my/module2", "a.js", "b.js"],
-	        callback: function(module1, module2) {
-	        },
-	        ready: function() {
-	            //This function is called once the DOM is ready.
-	        }
-	        */
 	        urlArgs: "cachebuster=" +  (new Date()).getTime(),
 		    paths: {
-	            jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min'
+	            jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min',
+		    	underscore: '../vendor/underscore/underscore'
 	        },
-	        priority: ['jquery']
+	        priority: ['jquery', 'underscore']
 	    };
 	</script>
 	<script data-main="script/" 
