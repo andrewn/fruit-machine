@@ -1,0 +1,114 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+}
+
+.winner {
+    font-size: 50px;
+
+    position: absolute;
+    width: 573px;
+    bottom: 50px;
+
+    background: rgba(0, 200, 0, 0.9);
+    opacity: 0;
+
+     -moz-transition: all 0.3s ease-out;  
+       -o-transition: all 0.3s ease-out;  
+  -webkit-transition: all 0.3s ease-out;  
+      -ms-transition: all 0.3s ease-out;  
+          transition: all 0.3s ease-out;  
+}
+
+.winner.show {
+    opacity: 1;
+}
+
+.credits {
+    width: 150px;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.credits .balance {
+    width: 50px;
+    height: 50px;
+}
+
+.credits button {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.credits button + button {
+    top: 50%;
+}
+
+.slots {
+    height: 240px;
+    width: 573px;
+    background-color: #333;
+    border: 10px solid #333;
+    border-radius: 30px;
+
+    margin: 0 auto;
+}
+.slot {
+    float: left;
+    width: 150px;
+    height: 200px;
+    margin: 10px;
+
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 3em;
+
+    background-color: #EEE;
+    border: 10px solid #AAA;
+    border-radius: 25px;
+
+    overflow: hidden;
+}
+.slot ul {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+.slot ul li {
+    height: 50%;
+    
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 100px;
+
+    background-position: -5px -5px;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    
+    font-weight: bold;
+}
+.slot ul li:first-child {
+    margin-top: -50px;
+    border-bottom: 1px solid #BBB;
+}
+.slot ul li + li:last-child {
+    /* margin-top: 50px; */
+    border-top: 1px solid #BBB;
+}
+.symbol-a { background-image: url('../icons/chrome.svg'); }
+.symbol-b { background-image: url('../icons/cloud_x.svg'); }
+.symbol-c { background-image: url('../icons/dollar.svg'); }
+.symbol-d { background-image: url('../icons/explorer.svg'); }
+.symbol-e { background-image: url('../icons/firefox.svg'); }
+.symbol-f { background-image: url('../icons/octocat.svg'); }
+.symbol-g { background-image: url('../icons/padlock.svg'); }
+.symbol-h { background-image: url('../icons/safari.svg'); }
+.symbol-i { background-image: url('../icons/speech.svg'); }
+.symbol-j { background-image: url('../icons/sun.svg'); }
+.symbol-k { background-image: url('../icons/twitter.svg'); }

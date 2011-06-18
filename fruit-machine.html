@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Fruit Machine</title>
+	<script type="text/javascript">
+		var require = {
+	        urlArgs: "cachebuster=" +  (new Date()).getTime(),
+		    paths: {
+	            jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min',
+		    	underscore: '../vendor/underscore/underscore'
+	        },
+	        priority: ['jquery', 'underscore']
+	    };
+	</script>
+	<script data-main="script/" 
+			type="text/javascript" 
+			src="vendor/requirejs/require.js"></script>
+	<script type="text/javascript">
+		var SYMBOLS = {
+			a: 'chrome', 	b: 'cloud_x', 	c: 'dollar', 	d: 'explorer',
+			e: 'firefox', 	f: 'octocat', 	g: 'padlock', 	h: 'safari',
+			i: 'speech', 	j: 'sun', 		k: 'twitter'
+		};
+
+		function updateResults(score) {
+			score.result.forEach(function (item, index) {
+				var sel = '#slot-'+index,
+					previous = score.previous[index],
+					current  = item,
+					next     = score.next[index],
+					slot     = $(sel);
+				console.log(previous, current, next);
+				slot.html(
+					'<ul>' + 
+						'<li class="symbol-' + previous.toLowerCase() + '">' + previous + '</li>' + 
+						'<li class="symbol-' + current.toLowerCase() + '">' + current  + '</li>' + 
+						'<li class="symbol-' + next.toLowerCase() + '">' + next     + '</li>' + 
+					'</ul>');
+			});
+			if ( score.isWinner ) {
+				$('.winner').addClass('show');
+			} else {
+				$('.winner').removeClass('show');
+			}
+		};
+
+		function updateCredits(game) {
+			$('.balance').text(game.credits());
+			if (game.credits() == 0) {
+				$("button.play").attr('disabled', 'disabled');
+			} else {
+				$("button.play").removeAttr('disabled');
+			}
+		};
+
+		require(["jquery", "controller/game"], function ($, GameController) {
+			var game = new GameController();
+			$("button.pay").click(function () {
+				game.insertCredit();
+				updateCredits(game);
+			});
+			$("button.play").click(function () {
+				game.play();
+				var score = game.score();
+				updateResults(score);
+				updateCredits(game);
+			});
+			updateResults(game.init());
+		});
+	</script>
+	<link href="css/screen.css" rel="stylesheet" media="all" />
+</head>
+<body>
+	<div class="credits">
+		<div class="balance">0</div>
+		<button class="pay">Insert 5 credits</button>
+		<button class="play" disabled>Play!</button>
+	</div>
+	<div class="slots">
+		<div class="winner">Winner!</div>
+		<div class="slot" id="slot-0">
+			<ul><li class="symbol-a">0</li><li class="symbol-b">0</li><li class="symbol-c">0</li></ul>
+		</div>
+		<div class="slot" id="slot-1">
+			<ul><li class="symbol-a">0</li><li class="symbol-b">0</li><li class="symbol-c">0</li></ul>
+		</div>
+		<div class="slot" id="slot-2">
+			<ul><li class="symbol-a">0</li><li class="symbol-b">0</li><li class="symbol-c">0</li></ul>
+		</div>
+	</div>
+	<div class="instructions">
+		<ul>
+			<li>Match 3 symbols for the jackpot of 30 credits</li>
+			<li>Match 2 symbols for 10 credits</li>
+			<li class="symbol-d">Wins nothing in any combinations</li>
+	</div>
+</body>
+</html>

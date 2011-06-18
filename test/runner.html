@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>QUnit Test Suite</title>
+	<link rel="stylesheet" 
+		  href="../vendor/qunit/qunit/qunit.css" 
+		  type="text/css" media="screen">
+	<script type="text/javascript" 
+			src="../vendor/qunit/qunit/qunit.js"></script>
+
+	<script type="text/javascript" 
+			src="../vendor/sinon/sinon.js"></script>
+
+	<script type="text/javascript">
+		var require = {
+	        urlArgs: "cachebuster=" +  (new Date()).getTime(),
+		    paths: {
+	            jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min',
+		    	underscore: '../vendor/underscore/underscore'
+	        },
+	        priority: ['jquery', 'underscore']
+	    };
+	</script>
+	<script data-main="../script/" 
+			type="text/javascript" 
+			src="../vendor/requirejs/require.js"></script>
+
+	<script type="text/javascript" src="model/player.js"></script>
+	<script type="text/javascript" src="model/fruit-machine.js"></script>
+	<script type="text/javascript" src="model/wheel.js"></script>
+	<script type="text/javascript" src="model/payline.js"></script>
+
+	<script type="text/javascript" src="controller/game.js"></script>
+</head>
+<body>
+	<h1 id="qunit-header">QUnit Test Suite</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup</div>
+</body>
+</html>

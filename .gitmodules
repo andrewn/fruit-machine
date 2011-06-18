@@ -1,0 +1,9 @@
+[submodule "vendor/qunit"]
+	path = vendor/qunit
+	url = git://github.com/jquery/qunit.git
+[submodule "vendor/requirejs"]
+	path = vendor/requirejs
+	url = git://github.com/jrburke/requirejs.git
+[submodule "vendor/require-cs"]
+	path = vendor/require-cs
+	url = git://github.com/jrburke/require-cs.git
