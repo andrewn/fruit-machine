@@ -15,3 +15,4 @@ Run tests by opening [test/runner.html] in your browser.
 - Shake to play
 - Format on small screen
 - Vary payout so that machine never pays out too much
+- docco
