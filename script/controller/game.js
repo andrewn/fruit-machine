@@ -10,8 +10,12 @@ define(["model/fruit-machine", "model/player"], function (FruitMachine, Player) 
         return this.player.credits;
     };
     Game.prototype.score = function () {
+        var winningAmount = this.fm.isWinner();
+        if (winningAmount) {
+            this.insertCredit(winningAmount);
+        }
         return {
-            isWinner    : this.fm.isWinner(),
+            isWinner    : winningAmount,
             result      : this.fm.result,
             previous    : this.fm.previous,
             next        : this.fm.next
